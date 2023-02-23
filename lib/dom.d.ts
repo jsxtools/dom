@@ -1,4 +1,4 @@
-/// <reference path="./utils.d.ts" />
+/// <reference path="./types/utils.d.ts" />
 
 export var SVG: import("@jsxtools/dom/utils").SVGInterface
 export var HTML: import("@jsxtools/dom/utils").HTMLInterface
