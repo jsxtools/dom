@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"asvetliakov.typescript-language-features-multi-host"
+	],
+	"unwantedRecommendations": [
+		"vscode.typescript-language-features"
+	]
+}

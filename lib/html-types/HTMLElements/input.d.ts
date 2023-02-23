@@ -1,0 +1,5 @@
+import { AllAttributes, GlobalAttributes, GetAttributes, GetMinAndMax, GetRoles, GetType, GetValue, Color, DateLocalString, DateString, MonthString, TimeString, WeekString } from '../Attributes';
+type baseInput = GlobalAttributes<HTMLElementTagNameMap['input']> & GetAttributes<'autocomplete' | 'autofocus' | 'disabled' | 'form' | 'list' | 'name' | 'readonly' | 'required'>;
+export interface input extends Partial<baseInput & GetType<'Input'> & Pick<AllAttributes, 'accept' | 'capture' | 'alt' | 'checked' | 'indeterminate' | 'dirname' | 'multiple' | 'id' | 'step' | 'pattern' | 'placeholder' | 'size' | 'maxlength' | 'minlength' | 'formaction' | 'formenctype' | 'formmethod' | 'formnovalidate' | 'formtarget' | 'height' | 'src' | 'width'> & GetRoles<'button' | 'link' | 'menuitem' | 'menuitemcheckbox' | 'menuitemradio' | 'option' | 'radio' | 'switch' | 'tab' | 'combobox' | 'searchbox' | 'spinbutton'> & GetValue<string | Color | number | DateString | DateLocalString | MonthString | TimeString | WeekString> & GetMinAndMax<number | DateString | DateLocalString | MonthString | TimeString | WeekString>> {
+}
+export {};

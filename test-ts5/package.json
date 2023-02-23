@@ -1,0 +1,9 @@
+{
+	"private": true,
+	"name": "@jsxtools/dom.test.ts5",
+	"type": "module",
+	"devDependencies": {
+		"@jsxtools/dom": "*",
+		"typescript": "5.0.0-beta"
+	}
+}

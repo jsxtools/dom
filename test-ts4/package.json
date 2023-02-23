@@ -1,0 +1,9 @@
+{
+	"private": true,
+	"name": "@jsxtools/dom.test.ts4",
+	"type": "module",
+	"devDependencies": {
+		"@jsxtools/dom": "*",
+		"typescript": "4.9.5"
+	}
+}

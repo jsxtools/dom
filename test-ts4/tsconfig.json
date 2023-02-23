@@ -1,0 +1,15 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"exactOptionalPropertyTypes": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"module": "ESNext",
+		"moduleResolution": "nodenext",
+		"noEmit": true,
+		"noImplicitOverride": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
+	"editor.useTabStops": true,
+	"files.exclude": {
+		"**/.vscode": true,
+		"**/*.lock": true,
+		"**/node_modules": true,
+		"**/*lock*": true,
+	},
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"prettier.useEditorConfig": true,
+	"typescript.tsdk": "../node_modules/typescript/lib"
+}

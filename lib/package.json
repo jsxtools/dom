@@ -1,0 +1,61 @@
+{
+	"name": "@jsxtools/dom",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "A DOM creation library",
+	"exports": {
+		".": {
+			"import": "./dom.js",
+			"require": "./dom.cjs",
+			"types": "./dom.d.ts"
+		},
+		"./global": {
+			"default": "./dom.global.js",
+			"types": "./dom.global.d.ts"
+		}
+	},
+	"main": "dom.cjs",
+	"module": "dom.js",
+	"files": [
+		"dom.cjs",
+		"dom.js",
+		"dom.d.ts",
+		"dom.global.js",
+		"dom.global.d.ts",
+		"types",
+		"html-types"
+	],
+	"author": "Jonathan Neal",
+	"license": "CC0-1.0",
+	"homepage": "https://github.com/jsxtools/dom/tree/main/lib#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jsxtools/dom.git",
+		"directory": "lib"
+	},
+	"keywords": [
+		"api",
+		"attributes",
+		"children",
+		"create",
+		"creates",
+		"creation",
+		"creations",
+		"document",
+		"dom",
+		"element",
+		"function",
+		"functions",
+		"helper",
+		"helpers",
+		"html",
+		"htmlelement",
+		"javascript",
+		"js",
+		"model",
+		"object",
+		"sugar",
+		"svg",
+		"svgelement"
+	]
+}

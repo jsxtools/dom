@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"allowImportingTsExtensions": true,
+		"esModuleInterop": true,
+		"exactOptionalPropertyTypes": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"noEmit": true,
+		"noImplicitOverride": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
+		"verbatimModuleSyntax": true
+	}
+}

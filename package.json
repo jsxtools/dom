@@ -1,0 +1,16 @@
+{
+	"private": true,
+	"name": "@jsxtools/dom.root",
+	"type": "module",
+	"workspaces": [
+		"lib",
+		"test-ts4",
+		"test-ts5"
+	],
+	"devDependencies": {
+		"typescript": "5.0.0-beta"
+	},
+	"scripts": {
+		"release": "npm --workspaces publish --access public"
+	}
+}
