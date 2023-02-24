@@ -23,13 +23,13 @@ import '@jsxtools/dom/global'
 
 ```html
 <script
+  type="module"
   src="https://cdn.jsdelivr.net/npm/@jsxtools/dom/dom.js"
 ></script>
 ```
 
 ```html
 <script
-  type="module"
   src="https://cdn.jsdelivr.net/npm/@jsxtools/dom/dom.global.js"
 ></script>
 ```
