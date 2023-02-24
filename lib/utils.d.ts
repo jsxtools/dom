@@ -142,7 +142,7 @@ declare module "@jsxtools/dom/utils" {
 		new (name: string, ...children: Appendable[]): HTMLElement
 
 		assign<T extends Element>(host: T, attributes: SafeElementAttributesMap<T>, ...children: Appendable[]): T
-		assign<T extends Element>(host: T, ...children: Appendable[]): T
+		assign<T extends ParentNode>(host: T, ...children: Appendable[]): T
 	}
 
 	interface MathML extends DOM<MathMLElementTagNameMap> {}
