@@ -1,63 +1,135 @@
-# DOM
+# DOM <img src="https://jonneal.dev/js-logo.svg" alt="" width="90" height="90" align="right">
 
-This library lets you manipulate the DOM with an API resembling JavaScript classes moreso than factories.
+[![npm version][npm-img]][npm-url]
+[![bundle size][bundlejs-img]][bundlejs-url]
+[![npm usage][usage-img]][npm-url]
+
+**DOM** is used to transform [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) objects in a class-like JavaScript API.
 
 ```ts
-new HTML.Element("div")
+new HTML("div")
 // vs document.createElement("div")
 ```
 
 ### Usage
 
+#### Node Package Manager
+
 ```shell
 npm install @jsxtools/dom
 ```
 
+#### Javascript
+
 ```js
-import { HTML } from '@jsxtools/dom'
+import { HTML, SVG, MathML } from 'http://unpkg.com/@jsxtools/dom'
 ```
 
 ```js
+// add HTML, SVG, & MathML to the global object
 import '@jsxtools/dom/global'
 ```
+
+#### HTML
 
 ```html
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@jsxtools/dom/dom.js"
+  src="https://cdn.jsdelivr.net/npm/@jsxtools/dom"
 ></script>
 ```
 
 ```html
+<!-- add HTML, SVG, & MathML to the global object -->
 <script
-  src="https://cdn.jsdelivr.net/npm/@jsxtools/dom/dom.global.js"
+  src="https://cdn.jsdelivr.net/npm/@jsxtools/dom/global.js"
 ></script>
 ```
 
 ---
 
-## Augment Native Elements
+## DOM API
 
-This library also lets you create augmented native elements.
+The **`HTML`**, **`SVG`**, and **`MathML`** classes can be used to create elements by tag name.
 
 ```js
-class CustomDivElement extends HTML.Element {
+const div = new HTML('div') // HTMLDivElement
+```
+
+### Assign
+
+The **`assign`** method can be used to assign attributes to elements.
+It will always return the assigned element.
+
+```js
+const anchorLink = new HTML('a') // HTMLAnchorElement
+
+HTML.assign(anchorLink, { href: '/path/to/another/page' })
+```
+
+This method can also used to append children.
+
+```js
+const button = new HTML('button') // HTMLButtonElement
+
+HTML.assign(button, { type: 'button' },
+  'Download',
+  new HTML('img', { src: '/path/to/presentational-image', 'aria-hidden': 'true' })
+)
+```
+
+## Generating MathML Elements
+
+The `MathML` class can be used to create [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) elements.
+
+```js
+new MathML('math', { display: 'inline' },
+  new MathML('mfrac',
+    new MathML('msup',
+      new MathML('mi', 'π'),
+      new MathML('mn', '2')
+    ),
+    new MathML('mn', '6')
+  )
+)
+```
+
+## Generating SVG Elements
+
+The `SVG` class can be used to create [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) elements.
+
+```js
+new SVG('svg', { width: 150, height: 100, viewBox: '0 0 300 200' },
+  new SVG('rect', { width: '100%', height: '100%', fill: 'red' }),
+  new SVG('circle', { cx: 150, cy: 100, r: 80, fill: 'green' }),
+  new SVG('text', { x: 150, y: 125, 'font-size': 60, 'text-anchor': 'middle', fill: 'white' },
+    'SVG'
+  )
+)
+```
+
+## Augmenting Native Elements
+
+The **`HTML`**, **`SVG`**, and **`MathML`** classes can be used to extend native element, allowing authors to create native elements with special abilities.
+
+```js
+class CustomDivElement extends HTML {
   get special() {
-    return 'feature'
+    return 'ability'
   }
 }
 
 const customDiv = new CustomDivElement('div');
 
-customDiv.special // "feature"
+customDiv.special // "ability"
 ```
 
-## Detailed Typing
+## Strong Typing
 
-This library also provides more detailed typing than TypeScript out-of-the-box.
+Detailed typing is provided for the **`HTML`**, **`SVG`**, and **`MathML`** classes, as well as the `assign` method.
 
 ```rs
-new HTML.Element("a", {
+new HTML("a", {
   h /*
        suggested attribute names:
 
@@ -66,7 +138,7 @@ new HTML.Element("a", {
 ```
 
 ```rs
-new HTML.Element("a", {
+new HTML("a", {
   role: /*
            suggested attribute values:
 
@@ -76,46 +148,19 @@ new HTML.Element("a", {
          | "switch" | "tab" | "treeitem"
 ```
 
-> This typing is provided curtesy of the amazing [HTMLType](https://github.com/michijs/htmltype) project by [Lucas M. Segurado](https://github.com/lsegurado). **HTMLType** is licensed [MIT](https://github.com/michijs/htmltype/blob/master/LICENSE.md).
+> Typing is provided curtesy of the amazing [HTMLType](https://github.com/michijs/htmltype) project by [Lucas M. Segurado](https://github.com/lsegurado). **HTMLType** is licensed [MIT](https://github.com/michijs/htmltype/blob/master/LICENSE.md).
 
-## Usage
+---
 
-```ts
-import { HTML } from './dom.js'
+## File size
 
-const div = new HTML.Element('div')
+**DOM** minifies to 528 bytes before compression.
 
-div // HTMLDivElement
-
-HTML.set(div, { class: 'lol yay' })
-
-div.className // "lol yay"
-
-const anchor = HTML.tag('a')
-
-anchor // HTMLAnchorElement
-
-HTML.set(anchor, {
-  role: 'button',
-})
-```
-
-```ts
-import { HTML } from './dom.js'
-
-const testAnchor = new HTML.Element('a')
-
-testAnchor // HTMLAnchorElement
-
-HTML.set(testAnchor, {
-  role: 'button',
-  href: '#fragment',
-})
-
-HTML.set(testAnchor, {
-  role: 'application', // No overload matches this call. ts(2769)
-})
-```
+| Compression | Filesize |
+|:----------- | --------:|
+| **Brotli**  |     428B |
+| **Deflate** |     480B |
+| **Gzip**    |     504B |
 
 ---
 
@@ -124,3 +169,10 @@ HTML.set(testAnchor, {
 Code original to this project is licensed CC0-1.0.
 
 Typing from [HTMLType](https://github.com/michijs/htmltype) is licensed [MIT](https://github.com/michijs/htmltype/blob/master/LICENSE.md).
+
+[npm-url]: https://www.npmjs.com/package/@jsxtools/dom
+[bundlejs-url]: https://bundlejs.com/?bundle&q=@jsxtools/dom
+
+[npm-img]: https://img.shields.io/npm/v/@jsxtools/dom?color=%23444&label=&labelColor=%23CB0000&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjE1MCAxNTAgNDAwIDQwMCIgZmlsbD0iI0ZGRiI+PHBhdGggZD0iTTE1MCA1NTBoMjAwVjI1MGgxMDB2MzAwaDEwMFYxNTBIMTUweiIvPjwvc3ZnPg==&style=for-the-badge
+[bundlejs-img]: https://img.shields.io/badge/dynamic/json?url=https://bundlejs.com/api?q=@jsxtools/dom&query=size.totalCompressedSize&color=%23444&labelColor=%233B82F6&label=&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MDAgNzAwIiBmaWxsPSIjRkZGIj4KCTxwYXRoIGQ9Ik0xNDYgMkExNzEgMTcxIDAgMCAwIDMgMTM5bC0yIDExdjQwMmwyIDExYzE1IDcyIDcxIDEyNSAxNDMgMTM2bDIwOSAxIDE5OS0xIDktMmM3MC0xNiAxMTktNjYgMTM0LTEzNWwyLTEwVjE1MGwtMi0xMkExNzEgMTcxIDAgMCAwIDU2MiAzbC0xMC0yLTE5OS0xQzE4NyAwIDE1MyAwIDE0NiAyem0xODEgMjUxdjM2bDctM2MxMy02IDMzLTkgNTAtNyA0MSA1IDcwIDM0IDgwIDc4IDIgMTIgMiA0MSAwIDUzLTUgMjItMTMgMzgtMjcgNTJhODIgODIgMCAwIDEtNjMgMjZjLTE1IDAtMTkgMC0yNS0yLTEwLTItMTctNi0yNC0xMGwtNS0zdjExaC00NVYyMTdoNTJ2MzZ6bTI5IDcxYy0yMCAzLTMyIDE5LTM1IDQ4LTMgMjUgMyA0OCAxNCA2MCA1IDYgMTMgMTAgMjMgMTEgMjUgNCA0NC05IDUxLTM2bDMtMTljMC0xNy0xLTI3LTctMzktOS0xOS0yNi0yOC00OS0yNXoiLz4KPC9zdmc+&style=for-the-badge
+[usage-img]: https://img.shields.io/badge/dynamic/json?url=https://api.npmjs.org/downloads/point/last-week/@jsxtools/dom&query=downloads&label=⇓+week&color=%23444&labelColor=%23EEd100&style=for-the-badge

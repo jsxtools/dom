@@ -1,29 +1,28 @@
 {
 	"name": "@jsxtools/dom",
 	"type": "module",
-	"version": "1.0.1",
-	"description": "A DOM creation library",
+	"version": "2.0.0",
+	"description": "Transform DOM objects in a class-like JavaScript API",
 	"exports": {
 		".": {
-			"import": "./dom.js",
-			"require": "./dom.cjs",
-			"types": "./dom.d.ts"
+			"import": "./index.js",
+			"require": "./index.cjs",
+			"types": "./index.d.ts"
 		},
 		"./global": {
-			"default": "./dom.global.js",
-			"types": "./dom.global.d.ts"
+			"default": "./global.js",
+			"types": "./global.d.ts"
 		}
 	},
-	"main": "dom.cjs",
-	"module": "dom.js",
+	"main": "index.js",
 	"files": [
-		"dom.cjs",
-		"dom.js",
-		"dom.d.ts",
-		"dom.global.js",
-		"dom.global.d.ts",
-		"types",
-		"html-types"
+		"index.cjs",
+		"index.js",
+		"index.d.ts",
+		"global.js",
+		"global.d.ts",
+		"utils.d.ts",
+		"types"
 	],
 	"author": "Jonathan Neal",
 	"license": "CC0-1.0",
@@ -35,15 +34,26 @@
 	},
 	"keywords": [
 		"api",
+		"assign",
+		"attribute",
 		"attributes",
 		"children",
+		"class",
+		"classes",
 		"create",
 		"creates",
 		"creation",
 		"creations",
 		"document",
 		"dom",
+		"domtree",
+		"domtrees",
 		"element",
+		"elements",
+		"extend",
+		"extends",
+		"extension",
+		"extensions",
 		"function",
 		"functions",
 		"helper",
@@ -52,10 +62,26 @@
 		"htmlelement",
 		"javascript",
 		"js",
+		"math",
+		"mathml",
+		"mathmlelement",
 		"model",
+		"modular",
+		"module",
+		"modules",
+		"node",
+		"nodes",
 		"object",
+		"objects",
+		"set",
 		"sugar",
 		"svg",
-		"svgelement"
+		"svgelement",
+		"tag",
+		"tags",
+		"tree",
+		"trees",
+		"utility",
+		"utilities"
 	]
 }

@@ -1,8 +1,8 @@
 declare module "@jsxtools/dom/utils" {
 	declare type primitive = string | number | bigint | boolean | undefined | symbol | null
 	declare type Appendable = Node | primitive
-	declare type AnyHTMLElement<T> = Partial<import('../html-types/HTMLElements/commonElementsWithAllRoles').commonElement<T>>
-	declare type HTMLAttributesTagNameMap = import('../html-types/HTMLElements/index').HTMLElements
+	declare type AnyHTMLElement<T> = Partial<import('./types/HTMLElements/commonElementsWithAllRoles').commonElement<T>>
+	declare type HTMLAttributesTagNameMap = import('./types/HTMLElements/index').HTMLElements
 
 	type ElementAttributesMap<T extends Element> = T extends HTMLAnchorElement
 		? HTMLAttributesTagNameMap['a']
@@ -134,49 +134,18 @@ declare module "@jsxtools/dom/utils" {
 			[attributeName: string]: unknown
 		}
 
-	interface HTMLInterface {
-		Element: {
-			new <K extends keyof HTMLElementTagNameMap>(name: K, attrs: SafeElementAttributesMap<HTMLElementTagNameMap[K]>, ...children: Appendable[]): HTMLElementTagNameMap[K]
-			new (name: string, attrs: SafeElementAttributesMap<Element>, ...children: Appendable[]): HTMLElement
+	interface DOM<TagsByName extends { [key: string]: Node }> {
+		new <K extends keyof TagsByName>(name: K, attributes: SafeElementAttributesMap<TagsByName[K]>, ...children: Appendable[]): TagsByName[K]
+		new <K extends keyof TagsByName>(name: K, ...children: Appendable[]): TagsByName[K]
 
-			new <K extends keyof HTMLElementTagNameMap>(name: K, attrs: SafeElementAttributesMap<HTMLElementTagNameMap[K]>): HTMLElementTagNameMap[K]
-			new (name: string, attrs: SafeElementAttributesMap<Element>): HTMLElement
+		new (name: string, attributes: SafeElementAttributesMap<Element>, ...children: Appendable[]): HTMLElement
+		new (name: string, ...children: Appendable[]): HTMLElement
 
-			new <K extends keyof HTMLElementTagNameMap>(name: K): HTMLElementTagNameMap[K]
-			new (name: string): HTMLElement
-		}
-
-		tag<K extends keyof HTMLElementTagNameMap>(name: K): HTMLElementTagNameMap[K]
-		tag<K extends keyof HTMLElementTagNameMap>(name: K, opts: ElementCreationOptions): HTMLElementTagNameMap[K]
-		tag(name: string): HTMLElement
-		tag(name: string, opts: ElementCreationOptions): HTMLElement
-
-		add<T extends ParentNode>(host: T, ...children: Appendable[]): T
-
-		set<T extends Element>(host: T): T
-		set<T extends Element>(host: T, attributes: SafeElementAttributesMap<T>): T
+		assign<T extends Element>(host: T, attributes: SafeElementAttributesMap<T>, ...children: Appendable[]): T
+		assign<T extends Element>(host: T, ...children: Appendable[]): T
 	}
 
-	interface SVGInterface {
-		Element: {
-			new <K extends keyof SVGElementTagNameMap>(name: K, attrs: SafeElementAttributesMap<SVGElementTagNameMap[K]>, ...children: Appendable[]): SVGElementTagNameMap[K]
-			new (name: string, attrs: SafeElementAttributesMap<Element>, ...children: Appendable[]): SVGElement
-
-			new <K extends keyof SVGElementTagNameMap>(name: K, attrs: SafeElementAttributesMap<SVGElementTagNameMap[K]>): SVGElementTagNameMap[K]
-			new (name: string, attrs: SafeElementAttributesMap<Element>): SVGElement
-
-			new <K extends keyof SVGElementTagNameMap>(name: K): SVGElementTagNameMap[K]
-			new (name: string): SVGElement
-		}
-
-		tag<K extends keyof SVGElementTagNameMap>(name: K): SVGElementTagNameMap[K]
-		tag<K extends keyof SVGElementTagNameMap>(name: K, opts: ElementCreationOptions): SVGElementTagNameMap[K]
-		tag(name: string): SVGElement
-		tag(name: string, opts: ElementCreationOptions): SVGElement
-
-		add<T extends ParentNode>(host: T, ...children: Appendable[]): T
-
-		set<T extends ParentNode>(host: T): T
-		set<T extends ParentNode>(host: T, attributes: SafeElementAttributesMap<T>): T
-	}
+	interface MathML extends DOM<MathMLElementTagNameMap> {}
+	interface HTML extends DOM<HTMLElementTagNameMap> {}
+	interface SVG extends DOM<SVGElementTagNameMap> {}
 }

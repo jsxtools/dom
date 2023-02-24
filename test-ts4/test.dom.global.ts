@@ -1,17 +1,17 @@
 import "@jsxtools/dom/global"
 
-const div = new HTML.Element('div')
+const div = new HTML('div')
 
 div // assert(div.constructor, HTMLDivElement)
 
-HTML.set(div, { class: 'lol yay' })
+HTML.assign(div, { class: 'lol yay' })
 
 // assert(div.className, "lol yay")
 
-const anchor = HTML.tag('a')
+const anchor = new HTML('a')
 
 anchor // assert(anchor.constructor, HTMLAnchorElement)
 
-HTML.set(anchor, {
+HTML.assign(anchor, {
 	role: 'button',
 })
