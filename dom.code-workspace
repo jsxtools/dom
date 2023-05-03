@@ -7,10 +7,7 @@
 			"path": "lib"
 		},
 		{
-			"path": "test-ts4"
-		},
-		{
-			"path": "test-ts5"
+			"path": "test"
 		}
 	],
 	"settings": {
@@ -27,10 +24,5 @@
 		"javascript.updateImportsOnFileMove.enabled": "always",
 		"prettier.useEditorConfig": true,
 		"typescript.tsdk": "node_modules/typescript/lib"
-	},
-	"extensions": {
-		"recommendations": [
-			"asvetliakov.typescript-language-features-multi-host"
-		]
 	}
 }

@@ -1,4 +1,4 @@
-import { SvgPropertiesHyphen } from 'csstype';
+import { SvgPropertiesHyphen } from '../csstype';
 import { Accumulate, Additive, BeginValueList, BlendMode, CalcMode, Units, ClockValue, Dur, EdgeMode, EndValueList, In, IRI, Language, Length, NumberOptionalNumber, Operator, PreserveAspectRatio, Ratio, Repeat, Restart, RGBA, Rotate, SpreadMethod, Stich, StringBoolean, TransformFunction, Orient, Ref, ListOfNumbers, TransformList, Points, Offset, LengthAdjust } from './types';
 export interface SVGOnlyAttributes extends SvgPropertiesHyphen {
     /**

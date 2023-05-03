@@ -1,4 +1,4 @@
-import { SvgPropertiesHyphen } from 'csstype';
+import { SvgPropertiesHyphen } from '../csstype';
 import { AllAttributes } from './AllAttributes';
 import { AriaAttributes } from './AriaAttributes';
 import { AllRoles } from './Roles';
@@ -7,7 +7,6 @@ import { GetRoles, GetType, GetValues, GetXY } from './Utils';
 export type SVGCoreAttributes = Pick<AllAttributes, 'id' | 'lang' | 'tabindex' | 'xml:base' | 'xml:lang' | `data-${string}`>;
 export type SVGStylingAttributes = Pick<AllAttributes, 'style' | 'class'>;
 export type SVGConditionalProcessingAttributes = Pick<AllAttributes, 'requiredExtensions' | 'systemLanguage'>;
-export type SVGPresentationAttributes = SvgPropertiesHyphen;
 export type SVGFilterPrimitiveAttributes<T = Length> = Pick<AllAttributes, 'height' | 'result' | 'width'> & GetXY<T>;
 export type SVGTransferFunctionAttributes<T extends keyof Type> = GetType<T> & Pick<AllAttributes, 'tableValues' | 'intercept' | 'amplitude' | 'exponent'>;
 export type SVGAnimationTargetElementAttributes = Pick<AllAttributes, 'href'>;

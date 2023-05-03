@@ -1,16 +1,17 @@
 {
 	"private": true,
 	"name": "@jsxtools/dom.root",
+	"version": "",
 	"type": "module",
 	"workspaces": [
 		"lib",
-		"test-ts4",
-		"test-ts5"
+		"test"
 	],
 	"devDependencies": {
-		"typescript": "5.0.0-beta"
+		"typescript": "5.3.3"
 	},
 	"scripts": {
-		"release": "npm --workspaces publish --access public"
+		"release": "npm --workspaces publish --access public",
+		"test": "npx tsc -p test/tsconfig.json"
 	}
 }

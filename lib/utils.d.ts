@@ -1,8 +1,8 @@
 declare module "@jsxtools/dom/utils" {
-	declare type primitive = string | number | bigint | boolean | undefined | symbol | null
-	declare type Appendable = Node | primitive
-	declare type AnyHTMLElement<T> = Partial<import('./types/HTMLElements/commonElementsWithAllRoles').commonElement<T>>
-	declare type HTMLAttributesTagNameMap = import('./types/HTMLElements/index').HTMLElements
+	type primitive = string | number | bigint | boolean | undefined | symbol | null
+	type Appendable = Node | primitive
+	type AnyHTMLElement<T extends Element> = Partial<import('./types/HTMLElements/commonElementsWithAllRoles').commonElement<T>>
+	type HTMLAttributesTagNameMap = import('./types/HTMLElements/index').HTMLElements
 
 	type ElementAttributesMap<T extends Element> = T extends HTMLAnchorElement
 		? HTMLAttributesTagNameMap['a']
@@ -128,21 +128,23 @@ declare module "@jsxtools/dom/utils" {
 		? HTMLAttributesTagNameMap['video']
 	: AnyHTMLElement<T>
 
-	type SafeElementAttributesMap<T extends Element> =
+	type DOMElementAttributesMap<T extends Element> =
 		& Partial<ElementAttributesMap<T>>
 		& {
 			[attributeName: string]: unknown
 		}
 
-	interface DOM<TagsByName extends { [key: string]: Node }> {
-		new <K extends keyof TagsByName>(name: K, attributes: SafeElementAttributesMap<TagsByName[K]>, ...children: Appendable[]): TagsByName[K]
-		new <K extends keyof TagsByName>(name: K, ...children: Appendable[]): TagsByName[K]
+	interface DOM<TagsByName extends object> {
+		Element: {
+			new <K extends keyof TagsByName>(name: K, attributes: DOMElementAttributesMap<Element & TagsByName[K]>, ...children: Appendable[]): TagsByName[K]
+			new <K extends keyof TagsByName>(name: K, ...children: Appendable[]): TagsByName[K]
 
-		new (name: string, attributes: SafeElementAttributesMap<Element>, ...children: Appendable[]): HTMLElement
-		new (name: string, ...children: Appendable[]): HTMLElement
-
-		assign<T extends Element>(host: T, attributes: SafeElementAttributesMap<T>, ...children: Appendable[]): T
-		assign<T extends ParentNode>(host: T, ...children: Appendable[]): T
+			new(name: string, attributes: DOMElementAttributesMap<Element>, ...children: Appendable[]): HTMLElement
+			new(name: string, ...children: Appendable[]): HTMLElement
+		}
+		
+		set<T extends Element>(host: T, attributes: DOMElementAttributesMap<T>, ...children: Appendable[]): T
+		set<T extends ParentNode>(host: T, ...children: Appendable[]): T
 	}
 
 	interface MathML extends DOM<MathMLElementTagNameMap> {}

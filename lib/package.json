@@ -1,26 +1,44 @@
 {
 	"name": "@jsxtools/dom",
 	"type": "module",
-	"version": "2.0.1",
-	"description": "Transform DOM objects in a class-like JavaScript API",
+	"version": "3.0.0",
+	"description": "Create and transform DOM objects with a class-like JavaScript API",
 	"exports": {
 		".": {
-			"import": "./index.js",
-			"require": "./index.cjs",
-			"types": "./index.d.ts"
+			"import": "./mod.js",
+			"require": "./mod.cjs",
+			"types": "./mod.d.ts"
 		},
 		"./global": {
 			"default": "./global.js",
 			"types": "./global.d.ts"
+		},
+		"./min": {
+			"import": "./mod.min.js",
+			"require": "./mod.min.cjs",
+			"types": "./mod.d.ts"
+		},
+		"./mod": {
+			"import": "./mod.js",
+			"require": "./mod.cjs",
+			"types": "./mod.d.ts"
+		},
+		"./mod.min": {
+			"import": "./mod.min.js",
+			"require": "./mod.min.cjs",
+			"types": "./mod.d.ts"
 		}
 	},
-	"main": "index.js",
+	"types": "mod.d.ts",
+	"main": "mod.js",
 	"files": [
-		"index.cjs",
-		"index.js",
-		"index.d.ts",
-		"global.js",
 		"global.d.ts",
+		"global.js",
+		"global.min.js",
+		"mod.cjs",
+		"mod.d.ts",
+		"mod.js",
+		"mod.min.js",
 		"utils.d.ts",
 		"types"
 	],

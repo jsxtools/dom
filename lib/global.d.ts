@@ -1,5 +1,7 @@
 /// <reference path="./utils.d.ts" />
 
-var MathML: import("@jsxtools/dom/utils").MathML
-var SVG: import("@jsxtools/dom/utils").SVG
-var HTML: import("@jsxtools/dom/utils").HTML
+declare var DOM: {
+	MathML: import("@jsxtools/dom/utils").MathML
+	HTML: import("@jsxtools/dom/utils").HTML
+	SVG: import("@jsxtools/dom/utils").SVG
+}
