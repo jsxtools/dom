@@ -164,19 +164,19 @@ new HTML.Element("a", {
 
 ## File size
 
-**DOM** minifies to 625 bytes before compression.
+**DOM** minifies to 614 bytes before compression.
 
 | Package    | Compression | Filesize |
 |:---------- |:----------- | --------:|
-| **Module** | **none**    |     686B |
-|            | **gzip**    |     422B |
-|            | **brotli**  |     353B |
-| **Common** | **none**    |     680B |
-|            | **gzip**    |     431B |
-|            | **brotli**  |     363B |
-| **Global** | **none**    |     661B |
-|            | **gzip**    |     422B |
-|            | **brotli**  |     354B |
+| **Module** | **none**    |     646B |
+|            | **gzip**    |     423B |
+|            | **brotli**  |     352B |
+| **Common** | **none**    |     633B |
+|            | **gzip**    |     429B |
+|            | **brotli**  |     356B |
+| **Global** | **none**    |     614B |
+|            | **gzip**    |     420B |
+|            | **brotli**  |     349B |
 
 ---
 

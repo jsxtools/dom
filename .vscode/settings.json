@@ -7,6 +7,7 @@
 		"**/*.lock": true,
 		"**/node_modules": true,
 		"**/*lock*": true,
+		"**/*.min.*": true
 	},
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"prettier.useEditorConfig": true,

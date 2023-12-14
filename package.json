@@ -8,10 +8,13 @@
 		"test"
 	],
 	"devDependencies": {
+		"terser": "5.26.0",
 		"typescript": "5.3.3"
 	},
 	"scripts": {
 		"release": "npm --workspaces publish --access public",
-		"test": "npx tsc -p test/tsconfig.json"
+		"test": "npx tsc -p test/tsconfig.json",
+		"update-minified-files": "node scripts/update-minified-files.js",
+		"update-readme-files": "node scripts/update-readme-files.js"
 	}
 }

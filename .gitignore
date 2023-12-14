@@ -10,3 +10,6 @@ node_modules
 
 # macos
 .DS_Store
+
+# minified files
+lib/*.min.*
